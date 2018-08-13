@@ -1,0 +1,13 @@
+body {
+    background: whitesmoke url("images/background.jpg");
+}
+
+.navbar {
+    border-radius: 0px;
+    font-family: Courier;
+    word-spacing: 1px;
+}
+
+.navbar-brand {
+    font-family: Satisfy, cursive;
+}

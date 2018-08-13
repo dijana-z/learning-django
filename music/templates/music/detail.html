@@ -1,0 +1,40 @@
+<!-- the HTML template for music detail page -->
+
+{# python code between the following symbols #}
+{%  extends 'music/base.html' %}
+{# that was indicating that we are using the base template here #}
+{# also python comments are written like this #}
+
+{# this is the block used in head for the title in base.html #}
+{% block title %}
+    <title>Album Detail</title>
+{% endblock %}
+
+{# this is the block used in li elements in nav in base.html #}
+{# NOTE: fix this, doesn't work #}
+{% block song_active_active %}"active"{% endblock %}
+
+{# this is the block used at the bottom of nav in base.html #}
+{% block body %}
+    {# python variable in double curly brackets  #}
+    <img src="{{ album.album_logo.url }}">
+    <h1>{{ album.album_title }}</h1>
+    <h3>{{ album.artist }}</h3>
+
+    {# python code inside the following symbols #}
+    {% if not album.song_set.count > 0 %}
+        <p>There are no songs in this album. :(</p>
+        {# we must close the python if statement #}
+    {% else %}
+        <ul>
+            {% for song in album.song_set.all %}
+            <li>{{ song.song_title }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {# error handler #}
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+{% endblock %}

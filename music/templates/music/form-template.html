@@ -1,0 +1,13 @@
+{# python code between the following symbols #}
+{% for field in form %}
+{# also python comments are written like this #}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <span class="text-danger small">{{ field.errors }}</span>
+        </div>
+        <!-- adding the labels, label tag is the text for the label -->
+        <label class="control-label col-sm-2">{{ field.label_tag }}</label>
+        <div class="col-sm-10">{{ field }}</div>
+    </div>
+{# we must end the python for loop #}
+{% endfor %}

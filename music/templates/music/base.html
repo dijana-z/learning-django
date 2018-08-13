@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {%  block title %}
+    {% endblock %}
+    {# loads the path to our static files #}
+    {# also python comments are written like this #}
+    {# python code inside the following symbols #}
+    {% load staticfiles %}
+
+    <!-- link the bootstrap files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy"/>
+    <!-- link the css stylesheet, loading just the one we need for this template so we don't load the whole thing -->
+    <link rel="stylesheet" type="text/css" href="{% static '/music/style.css' %}"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <!-- header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- adding the logo -->
+                <a class="navbar-brand" href="{% url 'music:index' %}">Music</a>
+            </div>
+
+            <!-- items -->
+            <div class="collapse navbar-collapse" id="topNavBar">
+                <ul class="nav navbar-nav">
+                    <li class="{% block album_active %}{% endblock %}">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-cd" aria-hidden="true"/> Albums
+                        </a>
+                    </li>
+                    <li class="{% block song_active %}{% endblock %}">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-music" aria-hidden="true"/> Songs
+                        </a>
+                    </li>
+                </ul>
+
+                <form class="navbar-form navbar-left" role="search" method="get" action="#">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="q" value=""/>
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="{% block add_active %}{% endblock %}">
+                        <a href="{% url 'music:album-add' %}">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"/> Add-album
+                        </a>
+                    </li>
+                    <li class="{% block logout_active %}{% endblock %}">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"/> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {# indicating that there will be a block of code next #}
+    {% block body %}
+    {% endblock %}
+</body>
+</html>

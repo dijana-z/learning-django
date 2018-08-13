@@ -1,2 +1,2 @@
 # learning-django
-Learning Django basics
+Learning Django basics following thenewboston's video tutorials on YouTube

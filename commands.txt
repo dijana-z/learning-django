@@ -1,0 +1,6 @@
+1) starting the project: django-admin startproject project-name
+2) running the server: python manage.py runserver
+3) making migrations: python manage.py makemigrations name-of-the-app
+4) updating the database structure (restart the server after this command): python manage.py migrate
+5) starting a companies app: python manage.py startapp companies
+6) creating a superuser: python manage.py createsuperuser
